@@ -1,4 +1,4 @@
-import { supabase } from './api/supabase.js';
+import { supabase } from './supabase.js';
 import { toggleLanguage } from './utils/i18n.js';
 
 // Инициализация на езика

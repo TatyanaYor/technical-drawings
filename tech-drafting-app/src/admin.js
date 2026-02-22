@@ -1,4 +1,4 @@
-import { supabase } from './api/supabase.js';
+import { supabase } from './supabase.js';
 
 async function loadAllProjects() {
     const { data: projects, error } = await supabase
