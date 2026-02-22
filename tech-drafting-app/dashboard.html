@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Табло на клиента | Техническо чертане</title>
+    <link href="https://cdn.jsdelivr.net" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net">
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-dark bg-dark mb-4">
+        <div class="container">
+            <span class="navbar-brand">Инженерен Портал</span>
+            <button id="logoutBtn" class="btn btn-outline-danger btn-sm">Изход</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Моите Проекти</h2>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newProjectModal">
+                <i class="bi bi-plus-lg"></i> Нова поръчка
+            </button>
+        </div>
+
+        <!-- Списък с проекти -->
+        <div class="row" id="projectsList">
+            <!-- Тук JS ще вмъкне проектите динамично -->
+            <div class="text-center p-5">
+                <div class="spinner-border text-primary" role="status"></div>
+                <p>Зареждане на проекти...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal за нов проект -->
+    <div class="modal fade" id="newProjectModal" tabindex="-1">
+        <div class="modal-dialog">
+            <form id="newProjectForm" class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Заявка за чертеж</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Заглавие</label>
+                        <input type="text" id="projectTitle" class="form-control" required placeholder="напр. Детайл А-12">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Описание</label>
+                        <textarea id="projectDesc" class="form-control" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success w-100">Създай проект</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="/src/dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net"></script>
+</body>
+</html>
