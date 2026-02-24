@@ -4,11 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Инженерно Чертане & Документация | Начало</title>
-    <!-- Bootstrap CSS -->
+    
+    <!-- КОРЕКЦИЯ: Пълни линкове към Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net" rel="stylesheet">
-    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net">
+    
     <style>
+        /* ГАРАНЦИЯ ЗА ПОДРАВНЯВАНЕ: Избутваме всичко вдясно в навигацията */
+        @media (min-width: 992px) {
+            .navbar-collapse {
+                display: flex !important;
+                justify-content: space-between;
+            }
+            .navbar-nav {
+                margin-left: auto !important; /* Това избутва бутоните вдясно */
+            }
+        }
+
         .hero-section {
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com');
             background-size: cover;
@@ -16,49 +28,61 @@
             color: white;
             padding: 100px 0;
         }
-        .service-card:hover {
-            transform: translateY(-10px);
-            transition: 0.3s;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+
+        /* Увеличаване на шрифта на бутоните */
+        .btn-large-custom {
+            font-size: 1.2rem !important;
+            font-weight: 700 !important;
+            padding: 10px 25px !important;
+            border-width: 2px !important;
         }
+
+        .text-gradient {
+            background: linear-gradient(45deg, #0d6efd, #0dcaf0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn { transition: all 0.3s ease; }
+        .btn:hover { transform: translateY(-3px); }
     </style>
 </head>
 <body>
 
-<!-- Навигация с големи бутони вдясно -->
+<!-- Навигация -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top py-3 border-bottom border-secondary">
     <div class="container">
-        <!-- Лого (ВИНАГИ ВЛЯВО) -->
+        <!-- Лого вляво -->
         <a class="navbar-brand fw-bold fs-2" href="/">
             <i class="bi bi-vector-pen text-primary"></i> DRAFTING<span class="text-primary">PRO</span>
         </a>
 
-        <!-- Бутон за мобилно меню (бургер) -->
+        <!-- Бутон за мобилно меню -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Този контейнер с ms-auto избутва съдържанието надясно -->
+        <!-- Контейнер с ms-auto (избутва вдясно) -->
         <div class="collapse navbar-collapse" id="navContent">
             <ul class="navbar-nav ms-auto align-items-center gap-3 mt-3 mt-lg-0">
                 
-                <!-- Бутон Език (Голям и с рамка) -->
+                <!-- Език -->
                 <li class="nav-item">
-                    <button class="btn btn-outline-light px-4 py-2 fw-bold border-2 fs-5" id="langBtn">
-                        <i class="bi bi-translate me-2"></i>BG
+                    <button class="btn btn-outline-light btn-large-custom" id="langBtn">
+                        <i class="bi bi-translate me-2"></i><span id="langText">BG</span>
                     </button>
                 </li>
 
-                <!-- Бутон Вход (Голям и с рамка) -->
+                <!-- Вход -->
                 <li class="nav-item">
-                    <a href="/login.html" class="btn btn-outline-primary px-4 py-2 fw-bold border-2 fs-5 text-uppercase">
+                    <a href="/login.html" class="btn btn-outline-primary btn-large-custom text-uppercase">
                         Вход
                     </a>
                 </li>
 
-                <!-- Бутон Регистрация (Голям и Плътен) -->
+                <!-- Регистрация -->
                 <li class="nav-item">
-                    <a href="/register.html" class="btn btn-primary px-4 py-2 fw-bold border-2 fs-5 text-uppercase shadow">
+                    <a href="/register.html" class="btn btn-primary btn-large-custom text-uppercase shadow">
                         Регистрация
                     </a>
                 </li>
@@ -67,57 +91,43 @@
         </div>
     </div>
 </nav>
-<script>
-    document.getElementById('langBtn').addEventListener('click', function() {
-        const btn = this;
-        if (btn.innerHTML.includes('BG')) {
-            btn.innerHTML = '<i class="bi bi-globe me-1"></i> EN';
-        } else {
-            btn.innerHTML = '<i class="bi bi-globe me-1"></i> BG';
-        }
-        // Можеш да добавиш пренасочване към [Netlify Language Paths](url-от-netlify) тук
-    });
-</script>
 
-   <!-- Основна секция (Hero) -->
+<!-- Hero Section -->
 <header class="py-5 my-lg-5">
     <div class="container">
         <div class="row align-items-center g-5">
-            <!-- Текст (вляво) -->
             <div class="col-lg-6 text-center text-lg-start">
                 <div class="badge bg-primary bg-opacity-10 text-primary mb-3 px-3 py-2 border border-primary border-opacity-25 rounded-pill">
-                    <i class="bi bi-stars me-1"></i> Ново: 3D Моделиране и Рендиране
+                    <i class="bi bi-stars me-1"></i> Ново: 3D Моделиране
                 </div>
-                <h1 class="display-2 fw-black mb-4">
-    Прецизно <span class="text-primary">чертане</span> за вашите идеи
-</h1>
-<p class="fs-4 text-secondary mb-5">
-    Професионално изготвяне на 2D и 3D документация с гарантирана точност.
-</p>
+                <h1 class="display-2 fw-bold mb-4">
+                    Прецизно <span class="text-gradient">чертане</span> за вашите идеи
+                </h1>
+                <p class="fs-4 text-secondary mb-5">
+                    Професионално изготвяне на 2D и 3D документация с гарантирана точност.
+                </p>
                 <div class="d-grid gap-3 d-md-flex justify-content-lg-start">
-                    <a href="/register.html" class="btn btn-primary btn-lg px-5 py-3 shadow">
+                    <a href="/register.html" class="btn btn-primary btn-lg px-5 py-3 shadow fw-bold">
                         Започни проект <i class="bi bi-arrow-right ms-2"></i>
                     </a>
-                    <a href="#services" class="btn btn-outline-secondary btn-lg px-5 py-3">
+                    <a href="#services" class="btn btn-outline-secondary btn-lg px-5 py-3 fw-bold">
                         Нашите услуги
                     </a>
                 </div>
             </div>
-            <!-- Снимка/Визуализация (вдясно) -->
             <div class="col-lg-6">
                 <div class="position-relative">
                     <img src="https://images.unsplash.com" 
                          class="img-fluid rounded-4 shadow-lg border border-secondary border-opacity-10" 
                          alt="Инженерно чертане">
-                    <!-- Малък детайл върху снимката -->
-                    <div class="position-absolute bottom-0 start-0 bg-white p-3 m-3 rounded-3 shadow-sm border border-light d-none d-md-block">
-                        <div class="d-flex align-items-center gap-3">
+                    <div class="position-absolute bottom-0 start-0 bg-white p-3 m-3 rounded-3 shadow-sm border d-none d-md-block">
+                        <div class="d-flex align-items-center gap-3 text-dark text-start">
                             <div class="bg-success bg-opacity-10 p-2 rounded-circle text-success">
                                 <i class="bi bi-check-circle-fill"></i>
                             </div>
                             <div>
                                 <h6 class="mb-0 fw-bold">100% Точност</h6>
-                                <small class="text-muted small">ISO Сертифицирано</small>
+                                <small class="text-muted">ISO Сертифицирано</small>
                             </div>
                         </div>
                     </div>
@@ -127,33 +137,22 @@
     </div>
 </header>
 
-<style>
-    /* Градиентен текст за по-модерен вид */
-    .text-gradient {
-        background: linear-gradient(45deg, #0d6efd, #0dcaf0);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-    /* Плавен преход за бутоните */
-    .btn { transition: all 0.3s ease; }
-    .btn:hover { transform: translateY(-3px); }
-</style>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net"></script>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net"></script>
-    <script>
+<script>
+    // Поправена логика за смяна на езика
     const langBtn = document.getElementById('langBtn');
-    const currentLang = document.getElementById('currentLang');
+    const langText = document.getElementById('langText');
     
     langBtn.addEventListener('click', () => {
-        // Проста логика за превключване на текста на бутона
-        if (currentLang.innerText === 'BG') {
-            currentLang.innerText = 'EN';
-            // Тук по-късно можеш да добавиш превод на текстовете
+        if (langText.innerText === 'BG') {
+            langText.innerText = 'EN';
         } else {
-            currentLang.innerText = 'BG';
+            langText.innerText = 'BG';
         }
     });
 </script>
+
 </body>
 </html>
