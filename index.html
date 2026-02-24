@@ -62,27 +62,28 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Контейнер с ms-auto (избутва вдясно) -->
+        <!-- Контейнер за бутоните вдясно -->
         <div class="collapse navbar-collapse" id="navContent">
-            <ul class="navbar-nav ms-auto align-items-center gap-3 mt-3 mt-lg-0">
+            <!-- flex-row подрежда елементите един до друг, list-unstyled премахва точките -->
+            <ul class="navbar-nav ms-auto d-flex flex-row align-items-center gap-3 list-unstyled mb-0 mt-3 mt-lg-0">
                 
                 <!-- Език -->
                 <li class="nav-item">
-                    <button class="btn btn-outline-light btn-large-custom" id="langBtn">
+                    <button class="btn btn-outline-light px-3 py-2 fw-bold border-2 fs-5 d-flex align-items-center" id="langBtn">
                         <i class="bi bi-translate me-2"></i><span id="langText">BG</span>
                     </button>
                 </li>
 
                 <!-- Вход -->
                 <li class="nav-item">
-                    <a href="/login.html" class="btn btn-outline-primary btn-large-custom text-uppercase">
+                    <a href="/login.html" class="btn btn-outline-primary px-4 py-2 fw-bold border-2 fs-5 text-uppercase text-decoration-none">
                         Вход
                     </a>
                 </li>
 
                 <!-- Регистрация -->
                 <li class="nav-item">
-                    <a href="/register.html" class="btn btn-primary btn-large-custom text-uppercase shadow">
+                    <a href="/register.html" class="btn btn-primary px-4 py-2 fw-bold border-2 fs-5 text-uppercase shadow text-decoration-none">
                         Регистрация
                     </a>
                 </li>
