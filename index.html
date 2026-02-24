@@ -45,6 +45,33 @@
 
         .btn { transition: all 0.3s ease; }
         .btn:hover { transform: translateY(-3px); }
+        /* Преливащ фон за цялата страница */
+body {
+    background: linear-gradient(180deg, #ffffff 0%, #e3f2fd 100%);
+    background-attachment: fixed; /* Фонът остава неподвижен при скролване */
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Стил за футъра */
+.custom-footer {
+    background-color: #212529;
+    color: #f8f9fa;
+    padding: 60px 0 30px;
+    margin-top: 80px;
+    border-top: 4px solid #0d6efd;
+}
+
+.footer-link {
+    color: #adb5bd;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-link:hover {
+    color: #0d6efd;
+    padding-left: 5px;
+}
     </style>
 </head>
 <body>
@@ -154,6 +181,60 @@
         }
     });
 </script>
+<!-- Красив Футър -->
+<footer class="custom-footer">
+    <div class="container">
+        <div class="row g-4">
+            <!-- За нас -->
+            <div class="col-lg-4 col-md-6">
+                <h5 class="fw-bold mb-4 text-white uppercase tracking-wider">
+                    <i class="bi bi-vector-pen text-primary me-2"></i>DRAFTING<span class="text-primary">PRO</span>
+                </h5>
+                <p class="text-muted small">
+                    Ние сме лидери в прецизното техническо чертане и документация. Вашият проект заслужава точност и професионализъм.
+                </p>
+                <div class="d-flex gap-3 fs-4 mt-3">
+                    <a href="#" class="text-primary"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-primary"><i class="bi bi-linkedin"></i></a>
+                    <a href="#" class="text-primary"><i class="bi bi-instagram"></i></a>
+                </div>
+            </div>
 
+            <!-- Бързи връзки -->
+            <div class="col-lg-2 col-md-6">
+                <h6 class="fw-bold mb-4 text-white text-uppercase">Услуги</h6>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="footer-link small d-block mb-2">2D AutoCAD</a></li>
+                    <li><a href="#" class="footer-link small d-block mb-2">3D Моделиране</a></li>
+                    <li><a href="#" class="footer-link small d-block mb-2">BIM Проектиране</a></li>
+                    <li><a href="#" class="footer-link small d-block mb-2">Визуализации</a></li>
+                </ul>
+            </div>
+
+            <!-- Поддръжка -->
+            <div class="col-lg-2 col-md-6">
+                <h6 class="fw-bold mb-4 text-white text-uppercase">Поддръжка</h6>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="footer-link small d-block mb-2">Чести въпроси</a></li>
+                    <li><a href="#" class="footer-link small d-block mb-2">Общи условия</a></li>
+                    <li><a href="#" class="footer-link small d-block mb-2">Поверителност</a></li>
+                    <li><a href="#" class="footer-link small d-block mb-2">Контакти</a></li>
+                </ul>
+            </div>
+
+            <!-- Контакти -->
+            <div class="col-lg-4 col-md-6">
+                <h6 class="fw-bold mb-4 text-white text-uppercase">Свържете се с нас</h6>
+                <p class="small text-muted mb-2"><i class="bi bi-geo-alt text-primary me-2"></i> София, Технически Университет</p>
+                <p class="small text-muted mb-2"><i class="bi bi-envelope text-primary me-2"></i> info@draftingpro.bg</p>
+                <p class="small text-muted"><i class="bi bi-telephone text-primary me-2"></i> +359 888 123 456</p>
+            </div>
+        </div>
+        <hr class="mt-5 mb-4 border-secondary opacity-25">
+        <div class="text-center text-muted small">
+            <p>© 2026 DRAFTING PRO. Всички права запазени. Изработено с <i class="bi bi-heart-fill text-danger mx-1"></i> в София.</p>
+        </div>
+    </div>
+</footer>
 </body>
 </html>
