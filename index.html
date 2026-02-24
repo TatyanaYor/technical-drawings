@@ -25,105 +25,120 @@
 </head>
 <body>
 
-   <!-- Навигация -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
+  <!-- Навигационна лента -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top border-bottom border-secondary">
     <div class="container">
-        <!-- Лого вляво -->
-        <a class="navbar-brand fw-bold" href="/">
-            <i class="bi bi-vector-pen text-primary"></i> DRAFTING PRO
+        <!-- Лого (вляво) -->
+        <a class="navbar-brand fw-bold text-uppercase tracking-wider" href="/">
+            <i class="bi bi-cpu text-primary me-2"></i>Drafting<span class="text-primary">AI</span>
         </a>
 
-        <!-- Бутон за мобилно меню -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <!-- Мобилен бутон -->
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#topNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Меню и Бутони вдясно -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link" href="#services">Услуги</a></li>
-                <li class="nav-item"><a class="nav-link" href="#pricing">Цени</a></li>
-            </ul>
-            
-            <div class="d-flex align-items-center gap-2">
-                <!-- Бутон за Език -->
-                <button id="langBtn" class="btn btn-outline-secondary btn-sm text-white border-secondary px-3">
-                    <i class="bi bi-translate me-1"></i> <span id="currentLang">BG</span>
-                </button>
+        <!-- Бутони (вдясно) -->
+        <div class="collapse navbar-collapse" id="topNavbar">
+            <ul class="navbar-nav ms-auto align-items-center gap-2 mt-3 mt-lg-0">
+                <!-- Бутон за Език (с рамка) -->
+                <li class="nav-item">
+                    <button class="btn btn-outline-secondary btn-sm px-3 text-white border-opacity-50" id="langToggle">
+                        <i class="bi bi-globe me-1"></i> BG
+                    </button>
+                </li>
                 
-                <!-- Бутони за Вход и Регистрация -->
-                <a href="/login.html" class="btn btn-outline-primary btn-sm px-3">Вход</a>
-                <a href="/register.html" class="btn btn-primary btn-sm px-3 shadow-sm">Регистрация</a>
-            </div>
+                <!-- Разделител (видим само на десктоп) -->
+                <div class="vr bg-secondary mx-2 d-none d-lg-block" style="height: 20px;"></div>
+
+                <!-- Бутон Вход (с рамка) -->
+                <li class="nav-item">
+                    <a href="/login.html" class="btn btn-outline-primary btn-sm px-4 fw-medium">
+                        <i class="bi bi-box-arrow-in-right me-1"></i> Вход
+                    </a>
+                </li>
+
+                <!-- Бутон Регистрация (плътен с рамка) -->
+                <li class="nav-item">
+                    <a href="/register.html" class="btn btn-primary btn-sm px-4 fw-medium border-primary shadow-sm">
+                        Регистрация
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>
+<script>
+    document.getElementById('langToggle').addEventListener('click', function() {
+        const btn = this;
+        if (btn.innerHTML.includes('BG')) {
+            btn.innerHTML = '<i class="bi bi-globe me-1"></i> EN';
+        } else {
+            btn.innerHTML = '<i class="bi bi-globe me-1"></i> BG';
+        }
+        // Можеш да добавиш пренасочване към [Netlify Language Paths](url-от-netlify) тук
+    });
+</script>
 
-    <!-- Hero Section -->
-    <header class="hero-section text-center">
-        <div class="container">
-            <h1 class="display-3 fw-bold mb-4">Професионално Техническо Чертане</h1>
-            <p class="lead mb-5 text-light">Превръщаме вашите идеи в прецизна техническа документация. От 2D скици до комплексни 3D модели.</p>
-            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
-                <a href="/register.html" class="btn btn-primary btn-lg px-4">Започнете Проект</a>
-                <a href="#services" class="btn btn-outline-light btn-lg px-4">Нашите Услуги</a>
+   <!-- Основна секция (Hero) -->
+<header class="py-5 my-lg-5">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <!-- Текст (вляво) -->
+            <div class="col-lg-6 text-center text-lg-start">
+                <div class="badge bg-primary bg-opacity-10 text-primary mb-3 px-3 py-2 border border-primary border-opacity-25 rounded-pill">
+                    <i class="bi bi-stars me-1"></i> Ново: 3D Моделиране и Рендиране
+                </div>
+                <h1 class="display-3 fw-bold lh-sm mb-4">
+                    Прецизно <span class="text-primary text-gradient">чертане</span> за вашите идеи
+                </h1>
+                <p class="lead text-secondary mb-5">
+                    Професионално изготвяне на 2D и 3D документация, AutoCAD планове и технически схеми. Сигурно съхранение и бърза комуникация.
+                </p>
+                <div class="d-grid gap-3 d-md-flex justify-content-lg-start">
+                    <a href="/register.html" class="btn btn-primary btn-lg px-5 py-3 shadow">
+                        Започни проект <i class="bi bi-arrow-right ms-2"></i>
+                    </a>
+                    <a href="#services" class="btn btn-outline-secondary btn-lg px-5 py-3">
+                        Нашите услуги
+                    </a>
+                </div>
             </div>
-        </div>
-    </header>
-
-    <!-- Секция Услуги -->
-    <section id="services" class="py-5 bg-light">
-        <div class="container text-center mb-5">
-            <h2 class="fw-bold">Какво предлагаме?</h2>
-            <hr class="mx-auto w-25">
-        </div>
-        <div class="container">
-            <div class="row g-4">
-                <!-- Услуга 1 -->
-                <div class="col-md-4">
-                    <div class="card h-100 border-0 service-card">
-                        <div class="card-body p-4 text-center">
-                            <div class="fs-1 text-primary mb-3"><i class="bi bi-layout-text-window"></i></div>
-                            <h5 class="card-title fw-bold">2D Чертежи</h5>
-                            <p class="card-text text-muted">Изготвяне на детайлни чертежи, планове и схеми на AutoCAD за всякакви нужди.</p>
+            <!-- Снимка/Визуализация (вдясно) -->
+            <div class="col-lg-6">
+                <div class="position-relative">
+                    <img src="https://images.unsplash.com" 
+                         class="img-fluid rounded-4 shadow-lg border border-secondary border-opacity-10" 
+                         alt="Инженерно чертане">
+                    <!-- Малък детайл върху снимката -->
+                    <div class="position-absolute bottom-0 start-0 bg-white p-3 m-3 rounded-3 shadow-sm border border-light d-none d-md-block">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="bg-success bg-opacity-10 p-2 rounded-circle text-success">
+                                <i class="bi bi-check-circle-fill"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0 fw-bold">100% Точност</h6>
+                                <small class="text-muted small">ISO Сертифицирано</small>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- Услуга 2 -->
-                <div class="col-md-4">
-                    <div class="card h-100 border-0 service-card">
-                        <div class="card-body p-4 text-center">
-                            <div class="fs-1 text-primary mb-3"><i class="bi bi-box"></i></div>
-                            <h5 class="card-title fw-bold">3D Моделиране</h5>
-                            <p class="card-text text-muted">Пълно триизмерно моделиране и визуализация на детайли и конструкции.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Услуга 3 -->
-                <div class="col-md-4">
-                    <div class="card h-100 border-0 service-card">
-                        <div class="card-body p-4 text-center">
-                            <div class="fs-1 text-primary mb-3"><i class="bi bi-file-earmark-pdf"></i></div>
-                            <h5 class="card-title fw-bold">Документация</h5>
-                            <p class="card-text text-muted">Оформяне на пълни комплекти техническа документация по БДС и ISO стандарти.</p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
-    </section>
+    </div>
+</header>
 
-    <!-- Футър -->
-    <footer class="bg-dark text-white py-4 text-center">
-        <div class="container">
-            <p class="mb-0 small">© 2026 DRAFTING PRO. Всички права запазени.</p>
-            <div class="mt-2">
-                <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="text-white me-3"><i class="bi bi-linkedin"></i></a>
-                <a href="#" class="text-white"><i class="bi bi-envelope"></i></a>
-            </div>
-        </div>
-    </footer>
+<style>
+    /* Градиентен текст за по-модерен вид */
+    .text-gradient {
+        background: linear-gradient(45deg, #0d6efd, #0dcaf0);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    /* Плавен преход за бутоните */
+    .btn { transition: all 0.3s ease; }
+    .btn:hover { transform: translateY(-3px); }
+</style>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net"></script>
