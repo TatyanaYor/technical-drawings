@@ -28,36 +28,35 @@
 <!-- Навигация с големи бутони вдясно -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top py-3 border-bottom border-secondary">
     <div class="container">
-        <!-- Лого вляво -->
-        <a class="navbar-brand fw-bold fs-3" href="/">
+        <!-- Лого (ВИНАГИ ВЛЯВО) -->
+        <a class="navbar-brand fw-bold fs-2" href="/">
             <i class="bi bi-vector-pen text-primary"></i> DRAFTING<span class="text-primary">PRO</span>
         </a>
 
-        <!-- Бутон за мобилни устройства -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navRight">
+        <!-- Бутон за мобилно меню (бургер) -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Контейнер за елементите вдясно -->
-        <div class="collapse navbar-collapse" id="navRight">
-            <!-- ms-auto избутва всичко след него вдясно -->
+        <!-- Този контейнер с ms-auto избутва съдържанието надясно -->
+        <div class="collapse navbar-collapse" id="navContent">
             <ul class="navbar-nav ms-auto align-items-center gap-3 mt-3 mt-lg-0">
                 
-                <!-- Бутон за Език с голям шрифт и рамка -->
+                <!-- Бутон Език (Голям и с рамка) -->
                 <li class="nav-item">
                     <button class="btn btn-outline-light px-4 py-2 fw-bold border-2 fs-5" id="langBtn">
                         <i class="bi bi-translate me-2"></i>BG
                     </button>
                 </li>
 
-                <!-- Бутон Вход с рамка -->
+                <!-- Бутон Вход (Голям и с рамка) -->
                 <li class="nav-item">
                     <a href="/login.html" class="btn btn-outline-primary px-4 py-2 fw-bold border-2 fs-5 text-uppercase">
                         Вход
                     </a>
                 </li>
 
-                <!-- Бутон Регистрация (Плътен) -->
+                <!-- Бутон Регистрация (Голям и Плътен) -->
                 <li class="nav-item">
                     <a href="/register.html" class="btn btn-primary px-4 py-2 fw-bold border-2 fs-5 text-uppercase shadow">
                         Регистрация
