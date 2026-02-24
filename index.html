@@ -25,51 +25,51 @@
 </head>
 <body>
 
-  <!-- Навигационна лента -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top border-bottom border-secondary">
+<!-- Навигация с големи бутони вдясно -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top py-3 border-bottom border-secondary">
     <div class="container">
-        <!-- Лого (вляво) -->
-        <a class="navbar-brand fw-bold text-uppercase tracking-wider" href="/">
-            <i class="bi bi-cpu text-primary me-2"></i>Drafting<span class="text-primary">AI</span>
+        <!-- Лого вляво -->
+        <a class="navbar-brand fw-bold fs-3" href="/">
+            <i class="bi bi-vector-pen text-primary"></i> DRAFTING<span class="text-primary">PRO</span>
         </a>
 
-        <!-- Мобилен бутон -->
-        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#topNavbar">
+        <!-- Бутон за мобилни устройства -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navRight">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Бутони (вдясно) -->
-        <div class="collapse navbar-collapse" id="topNavbar">
-            <ul class="navbar-nav ms-auto align-items-center gap-2 mt-3 mt-lg-0">
-                <!-- Бутон за Език (с рамка) -->
+        <!-- Контейнер за елементите вдясно -->
+        <div class="collapse navbar-collapse" id="navRight">
+            <!-- ms-auto избутва всичко след него вдясно -->
+            <ul class="navbar-nav ms-auto align-items-center gap-3 mt-3 mt-lg-0">
+                
+                <!-- Бутон за Език с голям шрифт и рамка -->
                 <li class="nav-item">
-                    <button class="btn btn-outline-secondary btn-sm px-3 text-white border-opacity-50" id="langToggle">
-                        <i class="bi bi-globe me-1"></i> BG
+                    <button class="btn btn-outline-light px-4 py-2 fw-bold border-2 fs-5" id="langBtn">
+                        <i class="bi bi-translate me-2"></i>BG
                     </button>
                 </li>
-                
-                <!-- Разделител (видим само на десктоп) -->
-                <div class="vr bg-secondary mx-2 d-none d-lg-block" style="height: 20px;"></div>
 
-                <!-- Бутон Вход (с рамка) -->
+                <!-- Бутон Вход с рамка -->
                 <li class="nav-item">
-                    <a href="/login.html" class="btn btn-outline-primary btn-sm px-4 fw-medium">
-                        <i class="bi bi-box-arrow-in-right me-1"></i> Вход
+                    <a href="/login.html" class="btn btn-outline-primary px-4 py-2 fw-bold border-2 fs-5 text-uppercase">
+                        Вход
                     </a>
                 </li>
 
-                <!-- Бутон Регистрация (плътен с рамка) -->
+                <!-- Бутон Регистрация (Плътен) -->
                 <li class="nav-item">
-                    <a href="/register.html" class="btn btn-primary btn-sm px-4 fw-medium border-primary shadow-sm">
+                    <a href="/register.html" class="btn btn-primary px-4 py-2 fw-bold border-2 fs-5 text-uppercase shadow">
                         Регистрация
                     </a>
                 </li>
+                
             </ul>
         </div>
     </div>
 </nav>
 <script>
-    document.getElementById('langToggle').addEventListener('click', function() {
+    document.getElementById('langBtn').addEventListener('click', function() {
         const btn = this;
         if (btn.innerHTML.includes('BG')) {
             btn.innerHTML = '<i class="bi bi-globe me-1"></i> EN';
@@ -89,12 +89,12 @@
                 <div class="badge bg-primary bg-opacity-10 text-primary mb-3 px-3 py-2 border border-primary border-opacity-25 rounded-pill">
                     <i class="bi bi-stars me-1"></i> Ново: 3D Моделиране и Рендиране
                 </div>
-                <h1 class="display-3 fw-bold lh-sm mb-4">
-                    Прецизно <span class="text-primary text-gradient">чертане</span> за вашите идеи
-                </h1>
-                <p class="lead text-secondary mb-5">
-                    Професионално изготвяне на 2D и 3D документация, AutoCAD планове и технически схеми. Сигурно съхранение и бърза комуникация.
-                </p>
+                <h1 class="display-2 fw-black mb-4">
+    Прецизно <span class="text-primary">чертане</span> за вашите идеи
+</h1>
+<p class="fs-4 text-secondary mb-5">
+    Професионално изготвяне на 2D и 3D документация с гарантирана точност.
+</p>
                 <div class="d-grid gap-3 d-md-flex justify-content-lg-start">
                     <a href="/register.html" class="btn btn-primary btn-lg px-5 py-3 shadow">
                         Започни проект <i class="bi bi-arrow-right ms-2"></i>
