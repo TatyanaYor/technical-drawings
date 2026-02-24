@@ -25,23 +25,39 @@
 </head>
 <body>
 
-    <!-- Навигация -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="#"><i class="bi bi-vector-pen"></i> DRAFTING PRO</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item"><a class="nav-link" href="#services">Услуги</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">За нас</a></li>
-                    <li class="nav-item ms-lg-3"><a href="/login.html" class="btn btn-outline-light btn-sm">Вход</a></li>
-                    <li class="nav-item ms-2"><a href="/register.html" class="btn btn-primary btn-sm">Регистрация</a></li>
-                </ul>
+   <!-- Навигация -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
+    <div class="container">
+        <!-- Лого вляво -->
+        <a class="navbar-brand fw-bold" href="/">
+            <i class="bi bi-vector-pen text-primary"></i> DRAFTING PRO
+        </a>
+
+        <!-- Бутон за мобилно меню -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Меню и Бутони вдясно -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" href="#services">Услуги</a></li>
+                <li class="nav-item"><a class="nav-link" href="#pricing">Цени</a></li>
+            </ul>
+            
+            <div class="d-flex align-items-center gap-2">
+                <!-- Бутон за Език -->
+                <button id="langBtn" class="btn btn-outline-secondary btn-sm text-white border-secondary px-3">
+                    <i class="bi bi-translate me-1"></i> <span id="currentLang">BG</span>
+                </button>
+                
+                <!-- Бутони за Вход и Регистрация -->
+                <a href="/login.html" class="btn btn-outline-primary btn-sm px-3">Вход</a>
+                <a href="/register.html" class="btn btn-primary btn-sm px-3 shadow-sm">Регистрация</a>
             </div>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <!-- Hero Section -->
     <header class="hero-section text-center">
@@ -111,5 +127,19 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net"></script>
+    <script>
+    const langBtn = document.getElementById('langBtn');
+    const currentLang = document.getElementById('currentLang');
+    
+    langBtn.addEventListener('click', () => {
+        // Проста логика за превключване на текста на бутона
+        if (currentLang.innerText === 'BG') {
+            currentLang.innerText = 'EN';
+            // Тук по-късно можеш да добавиш превод на текстовете
+        } else {
+            currentLang.innerText = 'BG';
+        }
+    });
+</script>
 </body>
 </html>
