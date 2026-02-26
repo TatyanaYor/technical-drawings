@@ -3,62 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Табло на клиента | Техническо чертане</title>
+    <title>Моите Проекти | Drafting Pro</title>
     <link href="https://cdn.jsdelivr.net" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net">
+    <style>
+        body { background: linear-gradient(180deg, #ffffff 0%, #e3f2fd 100%); min-height: 100vh; }
+        .project-card { border: none; border-radius: 15px; transition: 0.3s; background: white; }
+        .project-card:hover { transform: translateY(-5px); shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .status-badge { font-size: 0.8rem; padding: 5px 12px; border-radius: 20px; }
+    </style>
 </head>
-<body class="bg-light">
-    <nav class="navbar navbar-dark bg-dark mb-4">
-        <div class="container">
-            <span class="navbar-brand">Инженерен Портал</span>
+<body>
+
+<nav class="navbar navbar-dark bg-dark py-3">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="/index.html"><i class="bi bi-vector-pen text-primary"></i> DRAFTING PRO</a>
+        <div class="d-flex align-items-center">
+            <span id="userEmail" class="text-light me-3 small d-none d-md-inline"></span>
             <button id="logoutBtn" class="btn btn-outline-danger btn-sm">Изход</button>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    <div class="container">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2>Моите Проекти</h2>
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newProjectModal">
-                <i class="bi bi-plus-lg"></i> Нова поръчка
-            </button>
-        </div>
-
-        <!-- Списък с проекти -->
-        <div class="row" id="projectsList">
-            <!-- Тук JS ще вмъкне проектите динамично -->
-            <div class="text-center p-5">
-                <div class="spinner-border text-primary" role="status"></div>
-                <p>Зареждане на проекти...</p>
-            </div>
-        </div>
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-5">
+        <h2 class="fw-bold text-dark">Вашите Проекти</h2>
+        <button class="btn btn-primary px-4 py-2 fw-bold" data-bs-toggle="modal" data-bs-target="#newProjectModal">
+            <i class="bi bi-plus-lg me-2"></i>Нова поръчка
+        </button>
     </div>
 
-    <!-- Modal за нов проект -->
-    <div class="modal fade" id="newProjectModal" tabindex="-1">
-        <div class="modal-dialog">
-            <form id="newProjectForm" class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Заявка за чертеж</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label class="form-label">Заглавие</label>
-                        <input type="text" id="projectTitle" class="form-control" required placeholder="напр. Детайл А-12">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Описание</label>
-                        <textarea id="projectDesc" class="form-control" rows="3"></textarea>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-success w-100">Създай проект</button>
-                </div>
-            </form>
+    <!-- Списък с проекти -->
+    <div class="row g-4" id="projectsContainer">
+        <!-- Тук JS ще вмъкне проектите -->
+        <div class="text-center py-5">
+            <div class="spinner-border text-primary" role="status"></div>
+            <p class="mt-2 text-muted">Зареждане на информация...</p>
         </div>
     </div>
+</div>
 
-    <script type="module" src="/src/dashboard.js"></script>
-    <script src="https://cdn.jsdelivr.net"></script>
+<!-- Скрипт за логиката -->
+<script type="module" src="/src/dashboard.js"></script>
+<script src="https://cdn.jsdelivr.net"></script>
 </body>
 </html>

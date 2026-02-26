@@ -1,69 +1,65 @@
-import { supabase } from './supabase.js';
+import { supabase } from './api/supabase.js';
 
-const projectsList = document.getElementById('projectsList');
-const newProjectForm = document.getElementById('newProjectForm');
-
-// 1. Проверка за сесия
-async function checkUser() {
+async function loadDashboard() {
     const { data: { user } } = await supabase.auth.getUser();
-    if (!user) window.location.href = '/login.html';
-    return user;
-}
+    if (!user) { window.location.href = '/login.html'; return; }
+    
+    document.getElementById('userEmail').innerText = user.email;
 
-// 2. Зареждане на проекти
-async function loadProjects(userId) {
+    // Извличане на проекти
     const { data: projects, error } = await supabase
         .from('projects')
         .select('*')
-        .eq('client_id', userId)
+        .eq('client_id', user.id)
         .order('created_at', { ascending: false });
 
-    if (error) return console.error(error);
-    
-    renderProjects(projects);
-}
-
-function renderProjects(projects) {
-    if (projects.length === 0) {
-        projectsList.innerHTML = '<div class="alert alert-info">Все още нямате заявени проекти.</div>';
+    const container = document.getElementById('projectsContainer');
+    if (error || !projects.length) {
+        container.innerHTML = '<div class="text-center opacity-50">Няма открити активни проекти.</div>';
         return;
     }
 
-    projectsList.innerHTML = projects.map(p => `
-        <div class="col-md-4 mb-3">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body">
-                    <span class="badge ${getStatusClass(p.status)} mb-2">${p.status}</span>
-                    <h5 class="card-title">${p.title}</h5>
-                    <p class="card-text text-muted small">${p.description || 'Няма описание'}</p>
-                    <a href="/project-details.html?id=${p.id}" class="btn btn-outline-primary btn-sm w-100">
-                        Виж детайли / Файлове
-                    </a>
+    container.innerHTML = projects.map(p => {
+        // Логика за прогрес спрямо статуса
+        let progress = 20; 
+        let statusText = "В изчакване";
+        let color = "warning";
+
+        if(p.status === 'in_progress') { progress = 60; statusText = "В разработка"; color = "primary"; }
+        if(p.status === 'completed') { progress = 100; statusText = "Завършен"; color = "success"; }
+
+        // Примерна крайна дата (7 дни след създаването, ако няма записана в DB)
+        const deadline = new Date(p.created_at);
+        deadline.setDate(deadline.getDate() + 7);
+
+        return `
+            <div class="col-md-6 col-lg-4">
+                <div class="card project-card shadow-sm p-3">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-3">
+                            <span class="badge bg-${color} status-badge">${statusText}</span>
+                            <small class="text-muted"><i class="bi bi-calendar-event"></i> Срок: ${deadline.toLocaleDateString()}</small>
+                        </div>
+                        <h5 class="fw-bold mb-2">${p.title}</h5>
+                        <p class="small text-muted mb-4">${p.description || 'Няма допълнително описание.'}</p>
+                        
+                        <label class="small fw-bold mb-1">Фаза на разработка: ${progress}%</label>
+                        <div class="progress mb-3" style="height: 10px;">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-${color}" 
+                                 role="progressbar" style="width: ${progress}%"></div>
+                        </div>
+                        
+                        <a href="/project-details.html?id=${p.id}" class="btn btn-outline-dark btn-sm w-100 mt-2">Детайли и Файлове</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    `).join('');
+        `;
+    }).join('');
 }
 
-function getStatusClass(status) {
-    const classes = { pending: 'bg-warning', in_progress: 'bg-info', completed: 'bg-success' };
-    return classes[status] || 'bg-secondary';
-}
-
-// 3. Създаване на нов проект
-newProjectForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const user = await checkUser();
-    
-    const title = document.getElementById('projectTitle').value;
-    const description = document.getElementById('projectDesc').value;
-
-    const { error } = await supabase.from('projects').insert([
-        { title, description, client_id: user.id }
-    ]);
-
-    if (!error) location.reload();
+document.getElementById('logoutBtn').addEventListener('click', async () => {
+    await supabase.auth.signOut();
+    window.location.href = '/index.html';
 });
 
-// Инициализация
-checkUser().then(user => loadProjects(user.id));
+loadDashboard();

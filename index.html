@@ -5,36 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Инженерно Чертане & Документация | Начало</title>
     
-    <!-- КОРЕКЦИЯ: Пълни линкове към Bootstrap 5 -->
+    <!-- КОРЕКЦИЯ: Пълни линкове към Bootstrap 5 и Икони -->
     <link href="https://cdn.jsdelivr.net" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net">
     
     <style>
-        /* ГАРАНЦИЯ ЗА ПОДРАВНЯВАНЕ: Избутваме всичко вдясно в навигацията */
-        @media (min-width: 992px) {
-            .navbar-collapse {
-                display: flex !important;
-                justify-content: space-between;
-            }
-            .navbar-nav {
-                margin-left: auto !important; /* Това избутва бутоните вдясно */
-            }
+        /* Преливащ фон за цялата страница */
+        body {
+            background: linear-gradient(180deg, #ffffff 0%, #e3f2fd 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
-        .hero-section {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 100px 0;
+        /* СТИЛ ЗА НАВИГАЦИЯТА - ГАРАНТИРАНО ВДЯСНО */
+        .navbar-nav {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end; /* Избутва всичко вдясно */
+            align-items: center;
+            gap: 15px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
 
-        /* Увеличаване на шрифта на бутоните */
-        .btn-large-custom {
+        /* Стил за големите бутони в навигацията */
+        .btn-nav-custom {
+            font-size: 1.1rem !important;
+            font-weight: 700 !important;
+            padding: 10px 20px !important;
+            border-width: 2px !important;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        /* Стил за главните бутони в Hero секцията */
+        .btn-hero {
             font-size: 1.2rem !important;
             font-weight: 700 !important;
-            padding: 10px 25px !important;
-            border-width: 2px !important;
+            padding: 15px 35px !important;
+            border-radius: 10px !important;
+            transition: all 0.3s ease;
+        }
+        .btn-hero:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .main-footer {
+            background: #1a1d20;
+            color: #dee2e6;
+            padding: 60px 0 30px;
+            margin-top: auto;
+            border-top: 5px solid #0d6efd;
+        }
+
+        .footer-heading {
+            color: #ffffff;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 20px;
         }
 
         .text-gradient {
@@ -42,199 +76,110 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
-        .btn { transition: all 0.3s ease; }
-        .btn:hover { transform: translateY(-3px); }
-        /* Преливащ фон за цялата страница */
-body {
-    background: linear-gradient(180deg, #ffffff 0%, #e3f2fd 100%);
-    background-attachment: fixed; /* Фонът остава неподвижен при скролване */
-    min-height: 100vh;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Стил за футъра */
-.custom-footer {
-    background-color: #212529;
-    color: #f8f9fa;
-    padding: 60px 0 30px;
-    margin-top: 80px;
-    border-top: 4px solid #0d6efd;
-}
-
-.footer-link {
-    color: #adb5bd;
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-.footer-link:hover {
-    color: #0d6efd;
-    padding-left: 5px;
-}
     </style>
 </head>
 <body>
 
-<!-- Навигация -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top py-3 border-bottom border-secondary">
+<!-- НАВИГАЦИЯ (ВЕЧЕ Е ТУК И РАБОТИ) -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top py-3">
     <div class="container">
         <!-- Лого вляво -->
         <a class="navbar-brand fw-bold fs-2" href="/">
             <i class="bi bi-vector-pen text-primary"></i> DRAFTING<span class="text-primary">PRO</span>
         </a>
 
-        <!-- Бутон за мобилно меню -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- Контейнер за бутоните вдясно -->
-        <div class="collapse navbar-collapse" id="navContent">
-            <!-- flex-row подрежда елементите един до друг, list-unstyled премахва точките -->
-            <ul class="navbar-nav ms-auto d-flex flex-row align-items-center gap-3 list-unstyled mb-0 mt-3 mt-lg-0">
-                
+        <!-- Контейнер за бутоните - подредени вдясно -->
+        <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav">
                 <!-- Език -->
                 <li class="nav-item">
-                    <button class="btn btn-outline-light px-3 py-2 fw-bold border-2 fs-5 d-flex align-items-center" id="langBtn">
+                    <button class="btn btn-outline-light btn-nav-custom" id="langBtn">
                         <i class="bi bi-translate me-2"></i><span id="langText">BG</span>
                     </button>
                 </li>
-
                 <!-- Вход -->
                 <li class="nav-item">
-                    <a href="/login.html" class="btn btn-outline-primary px-4 py-2 fw-bold border-2 fs-5 text-uppercase text-decoration-none">
-                        Вход
-                    </a>
+                    <a href="/login.html" class="btn btn-outline-primary btn-nav-custom text-decoration-none">Вход</a>
                 </li>
-
                 <!-- Регистрация -->
                 <li class="nav-item">
-                    <a href="/register.html" class="btn btn-primary px-4 py-2 fw-bold border-2 fs-5 text-uppercase shadow text-decoration-none">
-                        Регистрация
-                    </a>
+                    <a href="/register.html" class="btn btn-primary btn-nav-custom border-primary shadow text-decoration-none">Регистрация</a>
                 </li>
-                
             </ul>
         </div>
     </div>
 </nav>
 
 <!-- Hero Section -->
-<header class="py-5 my-lg-5">
-    <div class="container">
+<header class="py-5 my-lg-5 flex-grow-1">
+    <div class="container text-center text-lg-start">
         <div class="row align-items-center g-5">
-            <div class="col-lg-6 text-center text-lg-start">
-                <div class="badge bg-primary bg-opacity-10 text-primary mb-3 px-3 py-2 border border-primary border-opacity-25 rounded-pill">
-                    <i class="bi bi-stars me-1"></i> Ново: 3D Моделиране
-                </div>
+            <div class="col-lg-6">
                 <h1 class="display-2 fw-bold mb-4">
                     Прецизно <span class="text-gradient">чертане</span> за вашите идеи
                 </h1>
                 <p class="fs-4 text-secondary mb-5">
-                    Професионално изготвяне на 2D и 3D документация с гарантирана точност.
+                    Професионално изготвяне на 2D и 3D техническа документация с гарантирана точност по ISO стандарти.
                 </p>
                 <div class="d-grid gap-3 d-md-flex justify-content-lg-start">
-                    <a href="/register.html" class="btn btn-primary btn-lg px-5 py-3 shadow fw-bold">
-                        Започни проект <i class="bi bi-arrow-right ms-2"></i>
+                    <a href="/register.html" class="btn btn-primary btn-hero shadow text-decoration-none">
+                        ЗАПОЧНИ ПРОЕКТ <i class="bi bi-plus-circle ms-2"></i>
                     </a>
-                    <a href="#services" class="btn btn-outline-secondary btn-lg px-5 py-3 fw-bold">
-                        Нашите услуги
+                    <a href="#services" class="btn btn-outline-secondary btn-hero text-decoration-none">
+                        НАШИТЕ УСЛУГИ <i class="bi bi-arrow-right ms-2"></i>
                     </a>
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="position-relative">
-                    <img src="https://images.unsplash.com" 
-                         class="img-fluid rounded-4 shadow-lg border border-secondary border-opacity-10" 
-                         alt="Инженерно чертане">
-                    <div class="position-absolute bottom-0 start-0 bg-white p-3 m-3 rounded-3 shadow-sm border d-none d-md-block">
-                        <div class="d-flex align-items-center gap-3 text-dark text-start">
-                            <div class="bg-success bg-opacity-10 p-2 rounded-circle text-success">
-                                <i class="bi bi-check-circle-fill"></i>
-                            </div>
-                            <div>
-                                <h6 class="mb-0 fw-bold">100% Точност</h6>
-                                <small class="text-muted">ISO Сертифицирано</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <img src="https://images.unsplash.com" 
+                     class="img-fluid rounded-4 shadow-lg" alt="Engineering Drafting">
             </div>
         </div>
     </div>
 </header>
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net"></script>
-
-<script>
-    // Поправена логика за смяна на езика
-    const langBtn = document.getElementById('langBtn');
-    const langText = document.getElementById('langText');
-    
-    langBtn.addEventListener('click', () => {
-        if (langText.innerText === 'BG') {
-            langText.innerText = 'EN';
-        } else {
-            langText.innerText = 'BG';
-        }
-    });
-</script>
-<!-- Красив Футър -->
-<footer class="custom-footer">
+<!-- Футър -->
+<footer class="main-footer text-start">
     <div class="container">
         <div class="row g-4">
-            <!-- За нас -->
-            <div class="col-lg-4 col-md-6">
-                <h5 class="fw-bold mb-4 text-white uppercase tracking-wider">
-                    <i class="bi bi-vector-pen text-primary me-2"></i>DRAFTING<span class="text-primary">PRO</span>
-                </h5>
-                <p class="text-muted small">
-                    Ние сме лидери в прецизното техническо чертане и документация. Вашият проект заслужава точност и професионализъм.
-                </p>
-                <div class="d-flex gap-3 fs-4 mt-3">
+            <div class="col-lg-4">
+                <h4 class="footer-heading">DRAFTING<span class="text-primary">PRO</span></h4>
+                <p class="small opacity-75">Лидери в техническото чертане. Прецизност, която вдъхва живот на вашите идеи.</p>
+                <div class="d-flex gap-3 mt-3 fs-4">
                     <a href="#" class="text-primary"><i class="bi bi-facebook"></i></a>
                     <a href="#" class="text-primary"><i class="bi bi-linkedin"></i></a>
-                    <a href="#" class="text-primary"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="text-primary"><i class="bi bi-envelope-at"></i></a>
                 </div>
             </div>
-
-            <!-- Бързи връзки -->
-            <div class="col-lg-2 col-md-6">
-                <h6 class="fw-bold mb-4 text-white text-uppercase">Услуги</h6>
-                <ul class="list-unstyled">
-                    <li><a href="#" class="footer-link small d-block mb-2">2D AutoCAD</a></li>
-                    <li><a href="#" class="footer-link small d-block mb-2">3D Моделиране</a></li>
-                    <li><a href="#" class="footer-link small d-block mb-2">BIM Проектиране</a></li>
-                    <li><a href="#" class="footer-link small d-block mb-2">Визуализации</a></li>
+            <div class="col-lg-2 offset-lg-1">
+                <h6 class="footer-heading small text-primary">Услуги</h6>
+                <ul class="list-unstyled small opacity-75">
+                    <li>2D AutoCAD</li>
+                    <li>3D Моделиране</li>
+                    <li>Технически схеми</li>
                 </ul>
             </div>
-
-            <!-- Поддръжка -->
-            <div class="col-lg-2 col-md-6">
-                <h6 class="fw-bold mb-4 text-white text-uppercase">Поддръжка</h6>
-                <ul class="list-unstyled">
-                    <li><a href="#" class="footer-link small d-block mb-2">Чести въпроси</a></li>
-                    <li><a href="#" class="footer-link small d-block mb-2">Общи условия</a></li>
-                    <li><a href="#" class="footer-link small d-block mb-2">Поверителност</a></li>
-                    <li><a href="#" class="footer-link small d-block mb-2">Контакти</a></li>
-                </ul>
-            </div>
-
-            <!-- Контакти -->
-            <div class="col-lg-4 col-md-6">
-                <h6 class="fw-bold mb-4 text-white text-uppercase">Свържете се с нас</h6>
-                <p class="small text-muted mb-2"><i class="bi bi-geo-alt text-primary me-2"></i> София, Технически Университет</p>
-                <p class="small text-muted mb-2"><i class="bi bi-envelope text-primary me-2"></i> info@draftingpro.bg</p>
-                <p class="small text-muted"><i class="bi bi-telephone text-primary me-2"></i> +359 888 123 456</p>
+            <div class="col-lg-3 offset-lg-2">
+                <h6 class="footer-heading small text-primary">Контакти</h6>
+                <p class="small mb-2"><i class="bi bi-geo-alt text-primary me-2"></i> София, бул. Кл. Охридски 8</p>
+                <p class="small"><i class="bi bi-telephone text-primary me-2"></i> +359 888 123 456</p>
             </div>
         </div>
-        <hr class="mt-5 mb-4 border-secondary opacity-25">
-        <div class="text-center text-muted small">
-            <p>© 2026 DRAFTING PRO. Всички права запазени. Изработено с <i class="bi bi-heart-fill text-danger mx-1"></i> в София.</p>
-        </div>
+        <hr class="my-5 border-secondary opacity-25">
+        <p class="text-center small opacity-50 mb-0">© 2026 DRAFTING PRO. Всички права запазени.</p>
     </div>
 </footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Логика за смяна на езика
+    document.getElementById('langBtn').addEventListener('click', function() {
+        const langText = document.getElementById('langText');
+        langText.innerText = langText.innerText === 'BG' ? 'EN' : 'BG';
+    });
+</script>
+
 </body>
 </html>
