@@ -55,6 +55,12 @@ async function loadDashboard() {
         const deadline = new Date(p.created_at);
         deadline.setDate(deadline.getDate() + 7);
 
+        // Ако проектът е "малка къща", добавяме бутон за чертеж
+        let drawingBtn = '';
+        if (p.title && p.title.toLowerCase().includes('малка къща')) {
+            drawingBtn = `<button class="btn btn-outline-secondary btn-sm w-100 mt-2" onclick="window.open('https://draftingpro.netlify.app/small-house-drawing.pdf', '_blank')">Виж чертеж</button>`;
+        }
+
         return `
             <div class="col-md-6 col-lg-4">
                 <div class="card project-card shadow-sm p-3">
@@ -65,13 +71,12 @@ async function loadDashboard() {
                         </div>
                         <h5 class="fw-bold mb-2">${p.title}</h5>
                         <p class="small text-muted mb-4">${p.description || 'Няма допълнително описание.'}</p>
-                        
+                        ${drawingBtn}
                         <label class="small fw-bold mb-1">Фаза на разработка: ${progress}%</label>
                         <div class="progress mb-3" style="height: 10px;">
                             <div class="progress-bar progress-bar-striped progress-bar-animated bg-${color}" 
                                  role="progressbar" style="width: ${progress}%"></div>
                         </div>
-                        
                         <a href="/project-details.html?id=${p.id}" class="btn btn-outline-dark btn-sm w-100 mt-2">Детайли и Файлове</a>
                     </div>
                 </div>
