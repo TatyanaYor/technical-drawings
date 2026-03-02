@@ -105,16 +105,15 @@
     // Динамично зареждане на функцията от модула
     import('/src/dashboard.js').then(mod => {
         window.addHouseProject = mod.addHouseProject;
-        // Покажи бутона според имейла на логнатия потребител
-        supabase.auth.getUser().then(({ data: { user } }) => {
-            if (!user) return;
-            if (user.email && user.email.includes('test1')) {
-                document.getElementById('addHouseBtn').classList.remove('d-none');
-            }
-            if (user.email && user.email.includes('test2')) {
-                document.getElementById('addVillaBtn').classList.remove('d-none');
-            }
-        });
+        // Вземи имейла на логнатия потребител
+        const userEmail = document.getElementById('userEmail').innerText;
+        // Покажи съответния бутон според имейла
+        if (userEmail.includes('test1')) {
+            document.getElementById('addHouseBtn').classList.remove('d-none');
+        }
+        if (userEmail.includes('test2')) {
+            document.getElementById('addVillaBtn').classList.remove('d-none');
+        }
         document.getElementById('addHouseBtn').onclick = function() {
             var modal = new bootstrap.Modal(document.getElementById('houseInfoModal'));
             modal.show();
