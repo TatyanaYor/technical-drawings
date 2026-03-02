@@ -13,6 +13,10 @@ async function loadDashboard() {
         .eq('client_id', user.id)
         .order('created_at', { ascending: false });
 
+    // Debug: логваме user.id и проектите
+    console.log('user.id:', user.id);
+    console.log('projects:', projects);
+
     const container = document.getElementById('projectsContainer');
     if (error || !projects.length) {
         container.innerHTML = '<div class="text-center opacity-50">Няма открити активни проекти.</div>';
