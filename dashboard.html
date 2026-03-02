@@ -34,8 +34,8 @@
     </div>
     <div class="mb-5"></div>
     <div class="mb-4">
-                <button class="btn btn-success" id="addHouseBtn">Проект малка къща</button>
-                <button class="btn btn-info ms-3" id="addVillaBtn">Проект вила</button>
+                <button class="btn btn-success d-none" id="addHouseBtn">Проект малка къща</button>
+                <button class="btn btn-info ms-3 d-none" id="addVillaBtn">Проект вила</button>
 
                 <!-- Модален прозорец за данни за вилата -->
                 <div class="modal fade" id="villaInfoModal" tabindex="-1" aria-labelledby="villaInfoModalLabel" aria-hidden="true">
@@ -105,6 +105,16 @@
     // Динамично зареждане на функцията от модула
     import('/src/dashboard.js').then(mod => {
         window.addHouseProject = mod.addHouseProject;
+        // Покажи бутона според имейла на логнатия потребител
+        supabase.auth.getUser().then(({ data: { user } }) => {
+            if (!user) return;
+            if (user.email && user.email.includes('test1')) {
+                document.getElementById('addHouseBtn').classList.remove('d-none');
+            }
+            if (user.email && user.email.includes('test2')) {
+                document.getElementById('addVillaBtn').classList.remove('d-none');
+            }
+        });
         document.getElementById('addHouseBtn').onclick = function() {
             var modal = new bootstrap.Modal(document.getElementById('houseInfoModal'));
             modal.show();
