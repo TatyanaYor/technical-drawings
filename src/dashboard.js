@@ -1,3 +1,22 @@
+// Функция за добавяне на тестов проект 'малка къща' за текущия потребител
+export const addHouseProject = async () => {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return;
+    const { error } = await supabase.from('projects').insert([
+        {
+            client_id: user.id,
+            title: 'Проект: Еднофамилна малка къща',
+            description: 'Архитектурен план и конструктивни детайли.',
+            status: 'in_progress'
+        }
+    ]);
+    if (error) {
+        alert('Грешка при добавяне на проект: ' + error.message);
+    } else {
+        alert('Проектът е добавен!');
+        location.reload();
+    }
+};
 import { supabase } from './supabase.js'; 
 
 async function loadDashboard() {
