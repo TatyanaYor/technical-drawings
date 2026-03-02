@@ -1,4 +1,4 @@
-import { supabase } from './api/supabase.js';
+import { supabase } from './supabase.js'; 
 
 async function loadDashboard() {
     const { data: { user } } = await supabase.auth.getUser();
